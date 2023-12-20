@@ -67,7 +67,6 @@ stopwords_en = get_stopwords_list("/kaggle/input/stop-words-in-28-languages/engl
 
 # Обединяване на стоп думите за двата езика
 stopwords_combined = stopwords_bg.union(stopwords_en)
-stop_words = nltk.corpus.stopwords.words('english')
 
 # Punkt tokenizer е модел за токенизация, който е разработен от 
 # NLTK и се използва за разделяне на текст на отделни токени 
@@ -87,7 +86,7 @@ word_frequency = {}
 for word in words:
     # За всяка дума (след като е конвертирана в малки букви) проверява дали
     # не е "stopword" (дума, която обикновено се игнорира в текста);
-    if word.lower() not in stop_words:
+    if word.lower() not in stopwords_combined:
         # Проверява се дали думата се съдържа в речника
         # Ако думата не  съществува в речника, я добавя със стойност 1
         if word not in word_frequency.keys():
